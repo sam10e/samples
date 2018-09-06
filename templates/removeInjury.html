@@ -1,0 +1,13 @@
+{% include 'header.html' %}
+<div class="container">
+    <h1>Accidentally added injury information incorrectly?  Remove it here!</h1>
+
+<div class="injury_delete">
+        <form method="POST" action="/injury/delete/submit">
+            <input type="number" name="injuryID" placeholder="injury ID">
+            <button>Delete Injury</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

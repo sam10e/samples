@@ -1,0 +1,70 @@
+{% include 'header.html' %}
+<body>
+<div class="container">
+    <h1>Add an Injury to an existing player</h1>
+    <br>
+    <p>Enter a playerID that you wish to add an injury to</p>
+    <form action="/manual/injury" method="GET">
+        <input type="text" placeholder="playerID" name="playerID">
+        <button>Submit</button>
+    </form>
+    {% if first and last %}
+ <h1>Player being updated: {{ first }} {{ last }}</h1>
+    <form method="POST" action="/injury/new/submit">
+        <h3>Player ID:</h3> <input type="text" name="playerID" value="{{ playerid }}" readonly="readonly">
+        <h3>Dates</h3>
+            Season Start Year * <input type="number" name="season" placeholder="ex: 2010"><br><br>
+            Date of Injury * <input type="text" name="injury_date" placeholder="YYYY-MM-DD">
+            Return date <input type="text" name="return_date" placeholder="YYYY-MM-DD">
+        <h3>Side of Body</h3>
+        <ul>
+            None <input type="radio" value="None" name="side" checked="checked">
+            Right <input type="radio" value="Right" name="side">
+            Left <input type="radio" value="Left" name="side">
+        </ul>
+        <h3>Body Part *</h3>
+            <ul>
+                <select name="part">
+                    <option disabled selected value>--Choose a body part--</option>
+                    <option value="Ankle"> Ankle</option>
+                    <option value="Abdomen"> Abdomen</option>
+                    <option value="Arm"> Arm </option>
+                    <option value="Back"> Back </option>
+                    <option value="Foot"> Foot </option>
+                    <option value="Groin"> Groin</option>
+                    <option value="Hand"> Hand</option>
+                    <option value="Head"> Head</option>
+                    <option value="Hip"> Hip</option>
+                    <option value="Knee"> Knee </option>
+                    <option value="Leg"> Leg </option>
+                    <option value="Shoulder">Shoulder </option>
+                </select>
+                Other <input type="text" name="part">
+            </ul>
+
+        <h3>Injury Description</h3>
+        <input type="text" name="description" placeholder="Ex: ACL tear, Hamstring sprain, Tibia fracture"><br><br>
+            <ul>
+                Unsure <input type="radio" value="Unsure" name="contact" checked="checked">
+                Contact <input type="radio" value="Contact" name="contact">
+                Non-contact <input type="radio" value="Non-Contact" name="contact">
+            </ul>
+            <ul>
+                Surgery? <input type="radio" value="YES" name="surgery">
+                Surgery Date <input type="text" placeholder="YYYY-MM-DD" name="surgeryDate"><br>
+                <input type="hidden" value="NO" name="surgery" checked="checked"><br>
+                Season-Ending? <input type="radio" value="YES" name="ending"><br>
+                <input type="hidden" value="NO" name="ending" checked="checked"><br>
+                Days of Rest * <input type="number" name="rest">
+                Games Missed * <input type="number" name="games_missed">
+                Minutes in Game Before Injury * <input type="number" name="minutes">
+            </ul>
+        <h3>Notes</h3>
+            <input type="text" name="severity">
+        <br><br><button>Submit</button>
+    </form>
+    <br>
+    {% endif %}
+</div>
+</body>
+</html>

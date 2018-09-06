@@ -1,0 +1,76 @@
+{% include 'header.html' %}
+<body>
+<div class="container">
+    <h1>Add an Injury to an existing player</h1>
+    <br>
+    <p>Enter a playerID that you wish to add an injury to</p>
+    <form action="/injury/new" method="GET">
+        <input type="text" placeholder="playerID" name="playerID">
+        Team <input type="text" name="team">
+        Date of Injury * <input type="text" name="injury_date" placeholder="YYYY-MM-DD">
+        <button>Submit</button>
+    </form>
+    {% if first and last %}
+ <h1>Player being updated: {{ first }} {{ last }}</h1>
+    <form method="POST" action="/injury/new/submit">
+        <h3>Player ID:</h3> <input type="text" name="playerID" value="{{ playerid }}" readonly="readonly">
+        <h3>Dates</h3>
+            Season Start Year * <input type="number" name="season" placeholder="ex: 2010" value="{{ season }}"><br><br>
+            Date of Injury * <input type="text" name="injury_date" placeholder="YYYY-MM-DD" value="{{ injury_date }}">
+            Return date <input type="text" name="return_date" placeholder="YYYY-MM-DD" value="{{ return_game }}">
+        <h3>Side of Body</h3>
+        <ul>
+            None <input type="radio" value="None" name="side" checked="checked">
+            Right <input type="radio" value="Right" name="side">
+            Left <input type="radio" value="Left" name="side">
+        </ul>
+        <h3>Body Part *</h3>
+            <ul>
+                <select name="part">
+                    <option disabled selected value>--Choose a body part--</option>
+                    <option value="Ankle"> Ankle</option>
+                    <option value="Abdomen"> Abdomen</option>
+                    <option value="Arm"> Arm </option>
+                    <option value="Back"> Back </option>
+                    <option value="Foot"> Foot </option>
+                    <option value="Groin"> Groin</option>
+                    <option value="Hand"> Hand</option>
+                    <option value="Head"> Head</option>
+                    <option value="Hip"> Hip</option>
+                    <option value="Knee"> Knee </option>
+                    <option value="Leg"> Leg </option>
+                    <option value="Shoulder">Shoulder </option>
+                </select>
+                Other <input type="text" name="part">
+            </ul>
+
+        <h3>Injury Description</h3>
+        <input type="text" name="description" placeholder="Ex: ACL tear, Hamstring sprain, Tibia fracture"><br><br>
+            <ul>
+                Unsure <input type="radio" value="Unsure" name="contact" checked="checked">
+                Contact <input type="radio" value="Contact" name="contact">
+                Non-contact <input type="radio" value="Non-Contact" name="contact">
+            </ul>
+            <ul>
+                Surgery? <input type="radio" value="YES" name="surgery">
+                Surgery Date <input type="text" placeholder="YYYY-MM-DD" name="surgeryDate"><br>
+                <input type="hidden" value="NO" name="surgery" checked="checked"><br>
+                {% if season_ending %}
+                    Season-Ending? <input type="radio" value="YES" name="ending" checked="checked"><br>
+                {% else %}
+                    Season-Ending? <input type="radio" value="YES" name="ending"><br>
+                    <input type="hidden" value="NO" name="ending" checked="checked"><br>
+                {% endif %}
+                Days of Rest * <input type="number" name="rest" value="{{ rest_days }}">
+                Games Missed * <input type="number" name="games_missed" value="{{ games_missed }}">
+                Minutes in Game Before Injury * <input type="number" name="minutes" value="{{ minutes_played }}">
+            </ul>
+        <h3>Notes</h3>
+            <input type="text" name="severity">
+        <br><br><button>Submit</button>
+    </form>
+    <br>
+    {% endif %}
+</div>
+</body>
+</html>

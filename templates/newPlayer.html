@@ -1,0 +1,72 @@
+{% include 'header.html' %}
+<body>
+<div class="container">
+    <div class="player">
+
+        <h1>Add a New Player</h1>
+
+        <h2>Total number of players in database: <strong>{{ value }}</strong></h2>
+
+        <form method="POST" action="/player/new/" class="form-horizontal">
+            <h3>Player ID Creation</h3>
+            <p>Enter first 5 letters of last name, first 2 letters of first name, and copy number of ID: </p>
+            <div class="form-group">
+                <input type="text" name="playerID" placeholder="ex: tennesa01" class="form-control"><br>
+            </div>
+            <h3>Basic Player Information</h3>
+                <ul>
+                    <div class="form-group">
+                        <li>First Name: <input type="text" name="fname" placeholder="first name" class="form-control"></li>
+                    </div>
+                    <div class="form-group">
+                        <li>Last Name: <input type="text" name="lname" placeholder="last name" class="form-control"></li>
+                    </div>
+                    <div class="form-group">
+                        <li>Height: <input type="text" name="height" placeholder="6-4, 6-6, etc." class="form-control"></li>
+                    </div>
+                    <div class="form-group">
+                        <li>Weight: <input type="number" name="weight" placeholder="weight in pounds" class="form-control"></li>
+                    </div>
+                    <div class="form-group">
+                        <li>Position: <input type="text" name="position" placeholder="PG/SG, PG, SG, SF, PF, C" class="form-control"></li>
+                    </div>
+                    <div class="form-group">
+                        <li>Draft Year: <input type="number" name="draftYear" placeholder="Draft Year" class="form-control"></li>
+                    </div>
+                    <div class="form-group">
+                        <li>Draft Pick Number: <input type="number" name="draftNum" placeholder="Draft Pick" class="form-control"></li>
+                    </div>
+                </ul>
+            <h3>Birth and School Info</h3>
+            <ul>
+                <div class="form-group">
+                    <li>Birth Date: <input type="text" name="birthDate" placeholder="YYYY-MM-DD" class="form-control"></li>
+                </div>
+                <div class="form-group">
+                    <li>Birth Place: <input type="text" name="birthPlace" placeholder="City, State; City, Country" class="form-control"></li>
+                </div>
+                <div class="form-group">
+                    <li> College: <input type="text" name="college" placeholder="College Name" value=NULL class="form-control"></li>
+                </div>
+                <div class="form-group">
+                    <li> High School: <input type="text" name="highSchool" placeholder="High School Name" value=NULL class="form-control"></li>
+                </div>
+                <div class="form-group">
+                    <li> Race: <input type="text" name="race" placeholder="Race" value=NULL class="form-control"></li>
+                </div>
+            </ul>
+            <h3>Shooting Hand</h3>
+            <ul>
+                <div class="form-group">
+                    <li>Right <input type="radio" name="hand" value="Right" checked="checked"></li>
+                </div>
+                <div class="form-group">
+                   <li>Left <input type="radio" name="hand" value="Left"></li>
+                </div>
+            </ul>
+            <button>Create Player</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

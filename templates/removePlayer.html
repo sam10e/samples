@@ -1,0 +1,12 @@
+{% include 'header.html' %}
+<div class="container">
+        <h1>Accidentally added the same player twice? Remove him here!</h1>
+     <div class="player">
+            <form method="POST" action="/player/delete/submit">
+                <input type="text" name="playerID" placeholder="player ID">
+                <button>Delete Player</button>
+            </form>
+     </div>
+</div>
+</body>
+</html>

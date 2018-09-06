@@ -1,0 +1,57 @@
+{% include 'header.html' %}
+<body>
+<div class="container">
+    <a class="btn btn-primary btn-lg" href="/display/" role="button">Refresh</a>
+    <h1>View Player Injuries</h1>
+    <h3>Select a playerID to view injuries for that player</h3>
+    <form class="form-horizontal" method="GET" action="/display/info/">
+        <div class="form-group">
+            <input type="text" placeholder="playerID" name="playerID">
+            <button>Look Up</button>
+        </div>
+    </form>
+    {% if results %}
+        <h2>Results for {{ first }} {{ last }}</h2>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Season</th>
+                <th>Injury Date</th>
+                <th>Return Date</th>
+                <th>Side</th>
+                <th>Body Part</th>
+                <th>Description</th>
+                <th>Contact?</th>
+                <th>Surgery?</th>
+                <th>Surgery Date</th>
+                <th>Season Ending?</th>
+                <th>Rest</th>
+                <th>Games Missed</th>
+                <th>Minutes Prior</th>
+                <th>Severity</th>
+            </tr>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.id }}</td>
+                <td>{{ result.season }}</td>
+                <td>{{ result.injuryDate }}</td>
+                <td>{{ result.returnDate }}</td>
+                <td>{{ result.side }}</td>
+                <td>{{ result.bodyPart }}</td>
+                <td>{{ result.description }}</td>
+                <td>{{ result.occurrence }}</td>
+                <td>{{ result.surgery }}</td>
+                <td>{{ result.surgeryDate }}</td>
+                <td>{{ result.seasonEnding }}</td>
+                <td>{{ result.rest }}</td>
+                <td>{{ result.gamesMissed }}</td>
+                <td>{{ result.minutesPrior }}</td>
+                <td>{{ result.severity }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>
