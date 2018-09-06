@@ -23,6 +23,8 @@ def home():
 
 
 # ==================================================ADD INJURY PAGE ==================================================
+# ========== THIS SECTION WAS A COLLABORATION WITH ANOTHER PERSON =====================================================
+# I took care of the routing and connection with the html code, while my colleague did the calculations that is a majority of this section.
 @app.route('/injury/', methods=['GET'])
 def new_injury():
     return render_template('addInjury.html')
